@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCUP | Admission</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/admission-styles.css">
+    <link rel="stylesheet" href="/static/other.css">
+</head>
+<body>
+    <video id="loadingVideo" src="/static/images/loading.webm" autoplay loop muted></video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">SchoolLogo</a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/admission" id="active">Admission</a></li>
+            <li><a href="/results">Results</a></li>
+            <li><a href="/fees">Pay Fees</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/notices">Notices</a></li>
+        </ul>
+        <div class="burger" id="burgerMenu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- School Admission Form -->
+    <div class="form-container">
+        <h2>School: New Admission Form</h2>
+        <form id="admissionForm" onsubmit="return validateForm()" method="post" action="/admission/auth">
+            <div class="form-group">
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName" placeholder="Enter Student Name" required>
+                <span class="error-msg" id="studentNameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="studentID">Student ID:</label>
+                <input type="text" id="studentID" name="studentID" placeholder="Create Student ID" required>
+                <span class="error-msg" id="studentIDerror"></span>
+            </div>
+            <div class="form-group">
+                <label for="fatherName">Father's Name:</label>
+                <input type="text" id="fatherName" name="fatherName" placeholder="Enter Father's Name" required>
+                <span class="error-msg" id="fatherNameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="motherName">Mother's Name:</label>
+                <input type="text" id="motherName" name="motherName" placeholder="Enter Mother's Name" required>
+                <span class="error-msg" id="motherNameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number:</label>
+                <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter 10-digit Mobile Number" maxlength="10" required>
+                <span class="error-msg" id="mobileNumberError"></span>
+            </div>
+            <div class="form-group">
+                <label for="aadhaarNumber">Aadhaar Number:</label>
+                <input type="text" id="aadhaarNumber" name="aadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" maxlength="12" >
+                <span class="error-msg" id="aadhaarNumberError"></span>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" name="dob" id="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="classSelection">Class:</label>
+                <select id="classSelection" name="classSel" required onchange="toggleSubjects()">
+                    <option value="">Select Class</option>
+                    <option value="1">Class 1</option>
+                    <option value="2">Class 2</option>
+                    <option value="3">Class 3</option>
+                    <option value="4">Class 4</option>
+                    <option value="5">Class 5</option>
+                    <option value="6">Class 6</option>
+                    <option value="7">Class 7</option>
+                    <option value="8">Class 8</option>
+                    <option value="9">Class 9</option>
+                    <option value="10">Class 10</option>
+                    <option value="11">Class 11</option>
+                    <option value="12">Class 12</option>
+                </select>
+            </div>
+            <div class="form-group" id="subjectSelection" style="display: none;">
+                <label for="subject">Select Stream:</label>
+                <select name="subject" id="subject">
+                    <option value="">Select Stream</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Arts">Arts</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                    <i class="fas fa-eye" id="togglePassword"></i>
+                </div>
+                <span class="error-msg" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <i class="fas fa-eye" id="toggleConfirmPassword"></i>
+                </div>
+                <span class="error-msg" id="confirmPasswordError"></span>
+            </div>
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+        <div class="update-info" style="display: flex; align-items: center; justify-content: center; margin-top: 20px;">
+            <p>Old Student? Click Here to <a href="/update-info">Update Your Data</a></p>
+        </div>
+    </div>
+    <script src="/js/admission-script.js"></script>
+    <script src="/js/other.js"></script>
+
+</body>
+</html>
